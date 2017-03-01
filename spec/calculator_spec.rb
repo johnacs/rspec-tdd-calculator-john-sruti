@@ -12,6 +12,10 @@ describe Calculator do
       it 'is an instance of the Calculator class' do
         expect(@calculator).to be_instance_of(Calculator)
       end
+
+      it 'argument should be readonly' do
+        expect(@calculator.num).to eq(1)
+      end
     end
 
   # Tests go here
