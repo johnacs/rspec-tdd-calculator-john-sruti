@@ -8,4 +8,8 @@ class Calculator
     @num
   end
 
+  def reset(arg)
+    @result = arg
+  end
+
 end
