@@ -1,7 +1,7 @@
 class Calculator
   # your class goes here
   attr_reader :num
-  attr_accessor :result
+  # attr_accessor :result
 
   def initialize(num)
     @num = num
