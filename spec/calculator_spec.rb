@@ -3,7 +3,7 @@ require_relative '../lib/calculator'
 
 describe Calculator do
 
-  before(:context) do
+  before(:each) do
     # initialize calculator
     @calculator = Calculator.new(1)
   end
