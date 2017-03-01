@@ -6,7 +6,11 @@ class Calculator
 
 
   def initialize(num)
+    @buffer = []
+    @buffer.push(num)
     @num = num
+    @bool= false
+    @lastOperation =[]
   end
 
   def result
@@ -18,20 +22,24 @@ class Calculator
   end
 
   def add(arg)
-    raise TypeError unless arg.is_a? Fixnum
+    raise TypeError unless arg.is_a? Numeric
     @num = @num + arg
+    @buffer.push(@num)
+    @lastOperation.push(self)
     self
   end
 
   def subtract(arg)
-    raise TypeError unless arg.is_a? Fixnum
+    raise TypeError unless arg.is_a? Numeric
     @num = @num - arg
+      @buffer.push(@num)
     self
   end
 
   def multiply(arg)
     raise TypeError unless arg.is_a? Numeric
     @num = @num * arg
+      @buffer.push(@num)
     self
   end
 
@@ -39,6 +47,7 @@ class Calculator
     # raise Exception.new("Cannot divide by 0") if arg.eq(0)
     raise TypeError unless arg.is_a? Numeric
     @num = @num/arg
+      @buffer.push(@num)
     self
   end
 
@@ -53,6 +62,29 @@ class Calculator
     when 'multiply'
       multiply(arg2)
     end
+  end
+
+  def undo
+    @num = @buffer[-2]
+    @bool = true
+  end
+
+  def redo
+    if (@bool)
+      @lastOperation[-1]
+      # case @operation[0]
+      # when 'add'
+      #   add(@operation[1])
+      # when 'subtract'
+      #   subtract(@operation[1])
+      # when 'multiply'
+      #   multiply(@operation[1])
+      # when 'divide'
+      #   divide(@operation[1])
+      # end
+      @bool = false
+    end
+
   end
 
 end

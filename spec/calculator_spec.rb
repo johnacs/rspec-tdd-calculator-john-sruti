@@ -13,7 +13,7 @@ describe Calculator do
       expect(@calculator).to be_instance_of(Calculator)
     end
 
-    [:result, :reset, :add, :subtract, :multiply, :divide, :operation].each do |method|
+    [:result, :reset, :add, :subtract, :multiply, :divide, :operation, :undo].each do |method|
       it "should respond to #{method}" do
         expect(@calculator).to respond_to(method)
       end
@@ -86,6 +86,22 @@ describe Calculator do
   describe '.operation' do
     it 'would apply the addition operation with the value of x' do
       expect(@calculator.operation('add', 2).result).to eq(3)
+    end
+  end
+
+  describe '.undo' do
+    it 'should undo the current operation' do
+      @calculator.add(10).result
+      expect(@calculator.undo.result).to eq(1)
+    end
+  end
+
+  describe '.redo' do
+    it 'should redo the undoed operation' do
+      @calculator.add(31)
+      # @calculator.subtract(1).result
+      @calculator.undo
+      expect(@calculator.redo.result).to eq(32)
     end
   end
 
