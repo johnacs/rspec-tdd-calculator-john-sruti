@@ -25,4 +25,9 @@ class Calculator
     @result = @num - arg
   end
 
+  def multiply(arg)
+    raise TypeError unless arg.is_a? Fixnum
+    @result = @num * arg
+  end
+
 end

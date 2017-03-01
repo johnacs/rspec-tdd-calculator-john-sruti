@@ -14,7 +14,7 @@ describe Calculator do
         expect(@calculator).to be_instance_of(Calculator)
       end
 
-     [:result, :reset ,:add].each do |method|
+     [:result, :reset ,:add, :subtract, :multiply].each do |method|
      it "should respond to #{method}" do
        expect(@calculator).to respond_to(method)
      end
@@ -56,5 +56,16 @@ describe ".subtract" do
     expect(@calculator.subtract(1)).to eq(0)
   end
 end
+
+describe ".multiply" do
+  it "should only accept a number as argument" do
+       expect{@calculator.multiply("something")}.to raise_error(TypeError)
+     end
+  it 'should subract the value to the result' do
+    expect(@calculator.multiply(5)).to eq(5)
+  end
+end
+
+
 
 end
