@@ -13,7 +13,7 @@ describe Calculator do
         expect(@calculator).to be_instance_of(Calculator)
       end
 
-     [:result, :reset].each do |method|
+     [:result, :reset ,:add].each do |method|
      it "should respond to #{method}" do
        expect(@calculator).to respond_to(method)
      end
@@ -37,4 +37,11 @@ describe ".reset" do
     expect(@calculator.reset(0)).to eq(0)
   end
 end
+
+describe ".add" do
+  it 'should add the value to the result' do
+    expect(@calculator.add(12)).to eq(13)
+  end
+end
+
 end
