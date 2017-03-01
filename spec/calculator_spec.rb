@@ -3,7 +3,7 @@ require_relative '../lib/calculator'
 
 describe Calculator do
 
-  before(:context) do
+  before(:each) do
     # initialize calculator
     @calculator = Calculator.new(1)
   end
@@ -15,4 +15,9 @@ describe Calculator do
     end
 
   # Tests go here
+
+  describe  ".result" do
+    it 'should return the current result'
+    expect(@calculator.result).to eq(1)
+  end
 end
