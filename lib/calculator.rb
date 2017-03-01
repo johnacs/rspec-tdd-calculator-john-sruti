@@ -12,22 +12,32 @@ class Calculator
   end
 
   def reset(arg)
-    @result = arg
+    @num = arg
   end
 
   def add(arg)
     raise TypeError unless arg.is_a? Fixnum
-    @result = @num + arg
+    @num = @num + arg
+    self
   end
 
   def subtract(arg)
     raise TypeError unless arg.is_a? Fixnum
-    @result = @num - arg
+    @num = @num - arg
+    self
   end
 
   def multiply(arg)
-    raise TypeError unless arg.is_a? Fixnum
-    @result = @num * arg
+    raise TypeError unless arg.is_a? Numeric
+    @num = @num * arg
+    self
+  end
+
+  def divide(arg)
+    # raise Exception.new("Cannot divide by 0") if arg.eq(0)
+    raise TypeError unless arg.is_a? Numeric
+    @num = @num/arg
+    self
   end
 
 end

@@ -6,7 +6,7 @@ describe Calculator do
   before(:each) do
     # initialize calculator
     @calculator = Calculator.new(1)
-    # @calculator2 = Calculator.new(2)
+    @calculator2 = Calculator.new(4)
   end
 
   describe "Initialization" do
@@ -44,7 +44,7 @@ describe ".add" do
        expect{@calculator.add("something")}.to raise_error(TypeError)
      end
   it 'should add the value to the result' do
-    expect(@calculator.add(12)).to eq(13)
+    expect(@calculator.add(12).result).to eq(13)
   end
 end
 
@@ -53,7 +53,7 @@ describe ".subtract" do
        expect{@calculator.subtract("something")}.to raise_error(TypeError)
      end
   it 'should subract the value to the result' do
-    expect(@calculator.subtract(1)).to eq(0)
+    expect(@calculator.subtract(1).result).to eq(0)
   end
 end
 
@@ -62,10 +62,26 @@ describe ".multiply" do
        expect{@calculator.multiply("something")}.to raise_error(TypeError)
      end
   it 'should subract the value to the result' do
-    expect(@calculator.multiply(5)).to eq(5)
+    expect(@calculator.multiply(5).result).to eq(5)
   end
 end
 
+describe ".divide" do
+  # it "should only accept a number as argument" do
+  #      expect{@calculator.divide("something")}.to raise_error(TypeError)
+  #    end
+     it "should not be equal to 0" do
+       expect{@calculator.divide("Something").result}.to raise_error(TypeError)
+     end
+  it 'should divide the value to the result' do
+    expect(@calculator2.divide(2).result).to eq(2)
+  end
+end
 
+describe "chain" do
+  it "should return the chained methods" do
+    expect(@calculator.add(1).multiply(2).result).to eq(4)
+  end
+end
 
 end
