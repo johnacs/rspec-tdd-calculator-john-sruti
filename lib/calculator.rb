@@ -1,7 +1,9 @@
 class Calculator
   # your class goes here
   attr_reader :num
+
   # attr_accessor :result
+
 
   def initialize(num)
     @num = num
@@ -38,6 +40,19 @@ class Calculator
     raise TypeError unless arg.is_a? Numeric
     @num = @num/arg
     self
+  end
+
+  def operation(arg1, arg2)
+    case arg1
+    when 'add'
+      add(arg2)
+    when 'subtract'
+      subtract(arg2)
+    when 'divide'
+      divide(arg2)
+    when 'multiply'
+      multiply(arg2)
+    end
   end
 
 end
