@@ -17,7 +17,8 @@ describe Calculator do
   # Tests go here
 
   describe  ".result" do
-    it 'should return the current result'
+    it 'should return the current result' do
     expect(@calculator.result).to eq(1)
   end
+end
 end
