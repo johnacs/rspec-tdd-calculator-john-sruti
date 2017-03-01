@@ -6,6 +6,7 @@ describe Calculator do
   before(:each) do
     # initialize calculator
     @calculator = Calculator.new(1)
+    # @calculator2 = Calculator.new(2)
   end
 
   describe "Initialization" do
@@ -39,8 +40,20 @@ describe ".reset" do
 end
 
 describe ".add" do
+  it "should only accept a number as argument" do
+       expect{@calculator.add("something")}.to raise_error(TypeError)
+     end
   it 'should add the value to the result' do
     expect(@calculator.add(12)).to eq(13)
+  end
+end
+
+describe ".subtract" do
+  it "should only accept a number as argument" do
+       expect{@calculator.subtract("something")}.to raise_error(TypeError)
+     end
+  it 'should subract the value to the result' do
+    expect(@calculator.subtract(1)).to eq(0)
   end
 end
 

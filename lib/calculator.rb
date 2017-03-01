@@ -16,7 +16,13 @@ class Calculator
   end
 
   def add(arg)
+    raise TypeError unless arg.is_a? Fixnum
     @result = @num + arg
+  end
+
+  def subtract(arg)
+    raise TypeError unless arg.is_a? Fixnum
+    @result = @num - arg
   end
 
 end
