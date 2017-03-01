@@ -1,16 +1,14 @@
 class Calculator
   # your class goes here
-  attr_reader :num
+  attr_accessor :num
 
   # attr_accessor :result
-
 
   def initialize(num)
     @buffer = []
     @buffer.push(num)
     @num = num
-    @bool= false
-    @lastOperation =[]
+    @bool = false
   end
 
   def result
@@ -23,31 +21,30 @@ class Calculator
 
   def add(arg)
     raise TypeError unless arg.is_a? Numeric
-    @num = @num + arg
+    @num += arg
     @buffer.push(@num)
-    @lastOperation.push(self)
     self
   end
 
   def subtract(arg)
     raise TypeError unless arg.is_a? Numeric
-    @num = @num - arg
-      @buffer.push(@num)
+    @num -= arg
+    @buffer.push(@num)
     self
   end
 
   def multiply(arg)
     raise TypeError unless arg.is_a? Numeric
-    @num = @num * arg
-      @buffer.push(@num)
+    @num *= arg
+    @buffer.push(@num)
     self
   end
 
   def divide(arg)
     # raise Exception.new("Cannot divide by 0") if arg.eq(0)
     raise TypeError unless arg.is_a? Numeric
-    @num = @num/arg
-      @buffer.push(@num)
+    @num /= arg
+    @buffer.push(@num)
     self
   end
 
@@ -67,24 +64,18 @@ class Calculator
   def undo
     @num = @buffer[-2]
     @bool = true
+
+    @num
   end
 
   def redo
-    if (@bool)
-      @lastOperation[-1]
-      # case @operation[0]
-      # when 'add'
-      #   add(@operation[1])
-      # when 'subtract'
-      #   subtract(@operation[1])
-      # when 'multiply'
-      #   multiply(@operation[1])
-      # when 'divide'
-      #   divide(@operation[1])
-      # end
+    if @bool
+      @num = @buffer[-1]
       @bool = false
     end
 
+    @num
   end
+
 
 end

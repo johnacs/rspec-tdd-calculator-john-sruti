@@ -92,7 +92,7 @@ describe Calculator do
   describe '.undo' do
     it 'should undo the current operation' do
       @calculator.add(10).result
-      expect(@calculator.undo.result).to eq(1)
+      expect(@calculator.undo).to eq(1)
     end
   end
 
@@ -101,7 +101,7 @@ describe Calculator do
       @calculator.add(31)
       # @calculator.subtract(1).result
       @calculator.undo
-      expect(@calculator.redo.result).to eq(32)
+      expect(@calculator.redo).to eq(32)
     end
   end
 
